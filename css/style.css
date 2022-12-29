@@ -102,12 +102,12 @@
     }
 }
 
-/* .avatar {
+.avatar {
 	transform: translatey(0px);
 	animation: float 6s ease-in-out infinite;
-} */
+}
 
-/* @keyframes float {
+@keyframes float {
 	0% {
 		transform: translatey(0px);
 	}
@@ -118,7 +118,7 @@
 	100% {
 		transform: translatey(0px);
 	}
-} */
+}
 
 /*** Header ***/
 #home {
