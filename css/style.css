@@ -130,7 +130,7 @@
 
 .typed-cursor {
     font-size: 30px;
-    color: var(--dark);
+    color: var(--light);
 }
 
 .btn-play {
