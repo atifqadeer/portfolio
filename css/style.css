@@ -95,7 +95,11 @@
 .navbar .navbar-nav .nav-link.active {
     color: var(--primary);
 }
-
+.service-item:hover{
+    box-shadow: 0 0 15px #FFC448; 
+  cursor: pointer;
+  transition: 0.3s;
+}
 @media (max-width: 991.98px) {
     .navbar .navbar-nav .nav-link  {
         padding: 10px 0;
