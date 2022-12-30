@@ -1,6 +1,7 @@
 <?php  
  
-if(isset($_POST['name'])) {
+if(isset($_POST['formData'])) 
+{
  $mailto = "atifqadeer26@gmail.com";  //My email address
  //getting customer data
  $name = $_POST['name']; //getting customer name
