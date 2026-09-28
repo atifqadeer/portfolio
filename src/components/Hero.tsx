@@ -144,8 +144,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-zinc-800 border-2 border-blue-500/70 shadow-lg shrink-0">
                   <img
-                    src="/src/assets/images/syed_atif_qadeer.jpg"
-                    alt="Syed Atif Qadeer - Senior Software Engineer"
+                    src={personal.avatar || "/src/assets/images/syed_atif_qadeer.webp"}
+                    alt={`${personal.name} - Senior Software Engineer`}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                     onError={(e) => {

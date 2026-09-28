@@ -70,6 +70,7 @@ export const PORTFOLIO_DATA = {
     availability: "Available for Senior Backend Roles, Architecture Consulting & Contracts",
     linkedin: "https://www.linkedin.com/in/syedatif-qadeer-691791105",
     github: "https://github.com",
+    avatar: "/src/assets/images/syed_atif_qadeer.webp",
     yearsExperience: "4+",
     projectsDelivered: "25+",
     uptimeRecord: "99.98%",
