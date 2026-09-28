@@ -2,5 +2,7 @@
   "name": "Syed Atif Qadeer – Senior Software Engineer Portfolio",
   "description": "Professional portfolio of Syed Atif Qadeer, Senior Software Engineer specializing in Laravel, PHP, Microservices, and scalable cloud architectures.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

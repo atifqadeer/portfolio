@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import syedAtifQadeerAvatar from '../assets/images/syed_atif_qadeer.webp';
 import {
   X,
   Printer,
@@ -167,10 +168,9 @@ Focus: ${edu.focus}
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-700 shrink-0 shadow-md">
                   <img
-                    src={personal.avatar || "/src/assets/images/syed_atif_qadeer.webp"}
+                    src={syedAtifQadeerAvatar}
                     alt={personal.name}
                     className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
                     onError={(e) => {
                       e.currentTarget.src = "/syed_atif_qadeer.webp";
                     }}
