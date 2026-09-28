@@ -58,10 +58,10 @@ export const PORTFOLIO_DATA = {
     name: "Syed Atif Qadeer",
     preferredName: "Atif Qadeer",
     title: "Senior Software Engineer",
-    specialization: "Laravel · PHP Ecosystem · Microservices · High-Scale REST APIs",
-    tagline: "Engineering scalable backend architectures, high-throughput event pipelines, and secure enterprise web systems.",
+    specialization: "Laravel · WordPress & WooCommerce · Microservices · PHP Ecosystem · High-Scale APIs",
+    tagline: "Engineering scalable backend architectures, custom WordPress solutions, high-throughput event pipelines, and secure web systems.",
     summary:
-      "Passionate and results-driven Laravel & PHP Developer with over 4 years of professional experience building dynamic, secure, and scalable web applications from the ground up. I specialize in Laravel, CodeIgniter, CakePHP, and Core PHP, backed by solid full-stack capabilities in MySQL database design, RESTful API development, Stripe payment integration, and modern frontend technologies. Experienced in microservices, asynchronous queues, WebSockets, Docker, and CI/CD pipelines.",
+      "Passionate and results-driven Software Engineer with over 4 years of professional experience building dynamic, secure, and scalable web applications from the ground up. I specialize in Laravel, bespoke WordPress (custom themes, plugins & WooCommerce), CodeIgniter, CakePHP, and Core PHP, backed by solid full-stack capabilities in MySQL database design, RESTful API development, Stripe payment integration, and modern frontend technologies. Experienced in microservices, asynchronous queues, WebSockets, Docker, and CI/CD pipelines.",
     email: "atifqadeer26@gmail.com",
     phone: "+923438677088",
     phoneFormatted: "+92 343 8677088",
@@ -90,6 +90,21 @@ export const PORTFOLIO_DATA = {
         { name: "CakePHP", level: "Advanced", years: 2 },
         { name: "Laravel Lumen", level: "Advanced", years: 3 },
         { name: "SOAP & XML Services", level: "Proficient", years: 2 },
+      ],
+    },
+    {
+      category: "WordPress & CMS Engineering",
+      description: "Custom plugin development, bespoke theme architecture, WooCommerce, and headless WP",
+      skills: [
+        { name: "WordPress (Custom Themes & Plugins)", level: "Expert", years: 4, highlight: true },
+        { name: "WooCommerce & Custom Gateways", level: "Expert", years: 4, highlight: true },
+        { name: "Advanced Custom Fields (ACF Pro)", level: "Expert", years: 4, highlight: true },
+        { name: "WP REST API & Headless CMS", level: "Advanced", years: 3, highlight: true },
+        { name: "Custom Post Types & Taxonomies", level: "Expert", years: 4 },
+        { name: "WP Performance, Redis & Cache", level: "Expert", years: 4, highlight: true },
+        { name: "Gutenberg Block Customization", level: "Advanced", years: 2 },
+        { name: "WP-CLI & Multisite Management", level: "Advanced", years: 3 },
+        { name: "WordPress Security & Hardening", level: "Expert", years: 4 },
       ],
     },
     {
@@ -207,6 +222,7 @@ export const PORTFOLIO_DATA = {
       coreTech: [
         "Laravel",
         "PHP 8",
+        "WordPress Integration",
         "MySQL",
         "REST APIs",
         "Git",
@@ -220,14 +236,16 @@ export const PORTFOLIO_DATA = {
     {
       id: "benchmark",
       company: "Benchmark",
-      role: "Core PHP + Laravel Developer",
+      role: "Core PHP, Laravel & WordPress Developer",
       period: "08/2021 – 09/2022",
       location: "Lahore, Pakistan",
       type: "Full-Time",
       summary:
-        "Built robust full-stack platforms, automated CI/CD deployment pipelines, and integrated third-party payment gateways and enterprise SOAP/REST endpoints.",
+        "Built robust full-stack platforms, custom WordPress themes and plugins, automated CI/CD deployment pipelines, and integrated third-party payment gateways and enterprise endpoints.",
       bullets: [
         "Designed and built production Laravel applications with clean architectural patterns, Docker containerization, and automated GitHub Actions CI/CD workflows.",
+        "Authored bespoke WordPress plugins and responsive themes using modern OOP PHP, ACF Pro, and custom WP REST API endpoints for high-conversion marketing portals.",
+        "Engineered WooCommerce stores with custom Stripe and PayPal payment gateways, dynamic cart calculations, and database indexing.",
         "Created secure authentication pipelines utilizing Laravel Sanctum, JWT, and custom middleware for multi-role user platforms.",
         "Authored comprehensive test suites adopting Test-Driven Development (TDD) using PHPUnit, Behat, and Laravel Dusk for functional and end-to-end browser coverage.",
         "Engineered modern responsive frontends with Laravel Blade, Tailwind CSS, and Laravel Mix, ensuring pixel-perfect fidelity across desktop and mobile screens.",
@@ -237,16 +255,49 @@ export const PORTFOLIO_DATA = {
       coreTech: [
         "Core PHP",
         "Laravel",
+        "WordPress",
+        "WooCommerce",
+        "ACF Pro",
+        "WP REST API",
         "Docker",
         "GitHub Actions",
         "Laravel Envoy",
         "PHPUnit",
         "Tailwind CSS",
-        "Laravel Lumen",
         "MySQL",
         "AWS",
       ],
       keyImpact: "Implemented automated TDD and CI/CD pipelines, decreasing production regression errors by over 60%.",
+    },
+    {
+      id: "wordpress-consulting",
+      company: "Independent Web Engineering",
+      role: "Senior WordPress & Full-Stack PHP Developer",
+      period: "09/2020 – 08/2021",
+      location: "Lahore, Pakistan (Remote)",
+      type: "Contract / Freelance",
+      summary:
+        "Delivered custom WordPress themes, bespoke plugin architecture, and high-performance WooCommerce solutions for international commercial clients.",
+      bullets: [
+        "Architected 15+ custom WordPress themes from scratch using clean OOP PHP, modern semantic CSS/Tailwind, and ACF Pro, completely avoiding heavy visual page builders for maximum performance.",
+        "Built proprietary WordPress plugins providing custom post types, dynamic AJAX filtering, member management, and external REST API integrations.",
+        "Engineered custom WooCommerce checkout pipelines, integrating multiple regional payment gateways (Stripe, PayPal, Cash on Delivery with SMS OTP verification).",
+        "Configured Redis object caching, Cloudflare CDN, and database transient optimization, elevating client site PageSpeed Insights scores from below 50 to 95+.",
+        "Executed seamless migrations of high-volume WooCommerce stores (10,000+ SKUs and user accounts) across hosting providers with zero downtime and data loss.",
+      ],
+      coreTech: [
+        "WordPress",
+        "WooCommerce",
+        "Core PHP (OOP)",
+        "ACF Pro",
+        "WP REST API",
+        "MySQL",
+        "JavaScript / jQuery",
+        "Stripe Gateway",
+        "Redis Caching",
+        "WP-CLI",
+      ],
+      keyImpact: "Delivered 15+ high-speed WordPress/WooCommerce websites achieving average 95+ Google PageSpeed ratings.",
     },
   ] as ExperienceItem[],
 
@@ -447,6 +498,134 @@ export const PORTFOLIO_DATA = {
         }
     });
 }`,
+      },
+    },
+    {
+      id: "novara-luxe-wordpress",
+      title: "Novara Luxe – Custom WooCommerce & Headless WordPress Platform",
+      category: "ecommerce",
+      categoryLabel: "eCommerce & CMS",
+      client: "Novara Retail Global",
+      role: "Lead WordPress & WooCommerce Architect",
+      duration: "5 Months",
+      shortDescription:
+        "High-performance bespoke WooCommerce platform featuring custom OOP plugin architecture, multi-currency Stripe checkout, and automated REST inventory sync.",
+      fullDescription:
+        "Novara Luxe is a flagship e-commerce solution engineered for a high-volume apparel brand. The client required an ultra-fast online shopping experience free from bloated generic themes or heavy page builders. Syed Atif Qadeer architected a tailored WordPress theme from the ground up using modern semantic markup, Tailwind CSS, and ACF Pro, developed proprietary WooCommerce plugins for customized volume discounts, implemented a seamless Stripe multi-currency checkout, and configured Redis object caching achieving sub-second page loads globally.",
+      techStack: [
+        "WordPress",
+        "WooCommerce",
+        "Core PHP (OOP)",
+        "ACF Pro",
+        "WP REST API",
+        "Stripe Payments",
+        "Redis Object Cache",
+        "Tailwind CSS",
+        "MySQL",
+      ],
+      metrics: [
+        { label: "Google PageSpeed", value: "98/100" },
+        { label: "Checkout Conversion", value: "+32%" },
+        { label: "Product Catalog", value: "12,000+ SKUs" },
+      ],
+      keyContributions: [
+        "Architected bespoke WordPress theme with zero page-builder bloat, utilizing Advanced Custom Fields Pro and reusable modular template parts.",
+        "Authored custom WooCommerce plugin implementing dynamic tiered volume discounts and personalized cart upsells via AJAX.",
+        "Integrated Stripe Elements and Apple Pay / Google Pay for lightning-fast one-click mobile checkout.",
+        "Implemented headless REST API endpoints allowing the brand's mobile app to fetch catalog inventory and submit orders seamlessly.",
+        "Configured Redis object caching and optimized wp_postmeta MySQL queries, reducing server response time (TTFB) to under 180ms.",
+      ],
+      architectureHighlights: [
+        "Custom OOP plugin structure using PSR-4 autoloading and singleton controllers within WordPress hook lifecycles.",
+        "Indexed database queries with custom transient caching on complex product variation attributes.",
+        "Automated webhook synchronization triggering fulfillment dispatch upon WooCommerce order completion.",
+      ],
+      liveStatus: "Production",
+      codeSnippet: {
+        title: "Custom WooCommerce Tiered Pricing Plugin Hook & REST Endpoint",
+        language: "php",
+        code: `<?php
+/**
+ * Plugin Name: Novara Custom Tiered Volume Pricing & REST Endpoint
+ * Description: High-performance dynamic pricing calculation and REST API sync for WooCommerce.
+ */
+
+namespace Novara\\Commerce;
+
+defined('ABSPATH') || exit;
+
+class TieredPricingEngine
+{
+    public function __construct()
+    {
+        // Intercept cart item pricing before totals calculation
+        add_action('woocommerce_before_calculate_totals', [$this, 'applyVolumeDiscounts'], 20, 1);
+        
+        // Register custom REST route for mobile app pricing verification
+        add_action('rest_api_init', [$this, 'registerPricingRestRoute']);
+    }
+
+    public function applyVolumeDiscounts(\\WC_Cart $cart): void
+    {
+        if (is_admin() && !defined('DOING_AJAX')) {
+            return;
+        }
+
+        foreach ($cart->get_cart() as $cartItemKey => $cartItem) {
+            $quantity = $cartItem['quantity'];
+            $product  = $cartItem['data'];
+            
+            // Tier 1: 5+ items -> 10% off; Tier 2: 10+ items -> 20% off
+            $discountMultiplier = 1.0;
+            if ($quantity >= 10) {
+                $discountMultiplier = 0.80;
+            } elseif ($quantity >= 5) {
+                $discountMultiplier = 0.90;
+            }
+
+            if ($discountMultiplier < 1.0) {
+                $originalPrice = (float) $product->get_regular_price();
+                $discountedPrice = round($originalPrice * $discountMultiplier, 2);
+                $product->set_price($discountedPrice);
+            }
+        }
+    }
+
+    public function registerPricingRestRoute(): void
+    {
+        register_rest_route('novara/v1', '/calculate-tier', [
+            'methods'  => \\WP_REST_Server::CREATABLE,
+            'callback' => [$this, 'handleRestPricingCalculation'],
+            'permission_callback' => '__return_true',
+        ]);
+    }
+
+    public function handleRestPricingCalculation(\\WP_REST_Request $request): \\WP_REST_Response
+    {
+        $productId = (int) $request->get_param('product_id');
+        $quantity  = (int) $request->get_param('quantity');
+
+        $product = wc_get_product($productId);
+        if (!$product) {
+            return new \\WP_REST_Response(['error' => 'Product not found'], 404);
+        }
+
+        $basePrice = (float) $product->get_regular_price();
+        $rate = ($quantity >= 10) ? 0.80 : (($quantity >= 5) ? 0.90 : 1.0);
+        $finalUnitPrice = round($basePrice * $rate, 2);
+
+        return new \\WP_REST_Response([
+            'product_id'        => $productId,
+            'quantity'          => $quantity,
+            'regular_price'     => $basePrice,
+            'discounted_price'  => $finalUnitPrice,
+            'total'             => round($finalUnitPrice * $quantity, 2),
+            'savings_percent'   => (1 - $rate) * 100,
+        ], 200);
+    }
+}
+
+new TieredPricingEngine();`,
       },
     },
     {

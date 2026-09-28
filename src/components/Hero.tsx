@@ -51,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
 
             {/* Sub-prose */}
             <p className="text-base sm:text-lg text-zinc-400 leading-relaxed mb-6 max-w-xl">
-              I am <strong className="text-zinc-200 font-semibold">{personal.name}</strong>, a senior backend engineer with 4+ years of expertise designing mission-critical web platforms, high-throughput asynchronous queue workers, Stripe payment pipelines, and normalized MySQL schemas.
+              I am <strong className="text-zinc-200 font-semibold">{personal.name}</strong>, a senior software engineer with 4+ years of expertise delivering high-performance Laravel backends, bespoke WordPress & WooCommerce architectures, high-throughput queue workers, and hardened REST APIs.
             </p>
 
             {/* Clean unboxed metadata with typographic separators */}
@@ -135,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-zinc-300 bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-zinc-700/60">
                   <span className="flex items-center gap-1.5 font-mono text-[11px]">
                     <Server className="w-3.5 h-3.5 text-blue-400" />
-                    <span>Microservices &middot; Laravel 11 &middot; MySQL</span>
+                    <span>Laravel 11 &middot; WordPress &middot; MySQL</span>
                   </span>
                   <span className="text-emerald-400 font-medium text-[11px]">Online</span>
                 </div>
