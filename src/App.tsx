@@ -46,7 +46,7 @@ export default function App() {
         {/* Featured Case Studies & Production Projects */}
         <ProjectsSection />
 
-        {/* Architecture & Engineering Workbench */}
+        {/* Architecture Philosophy */}
         <ArchitecturePhilosophy />
 
         {/* Skills & Technical Competencies Matrix */}

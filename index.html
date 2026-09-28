@@ -1,6 +1,32 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
+    <script>
+      (function () {
+        try {
+          var origFetch = window.fetch;
+          var fetchBinding = origFetch ? origFetch.bind(window) : undefined;
+          var descriptor = {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+              return fetchBinding;
+            },
+            set: function (newFn) {
+              fetchBinding = newFn;
+            },
+          };
+          try {
+            Object.defineProperty(window, 'fetch', descriptor);
+          } catch (e) {}
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', descriptor);
+            } catch (e) {}
+          }
+        } catch (err) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Syed Atif Qadeer – Senior Software Engineer Portfolio</title>

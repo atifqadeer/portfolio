@@ -141,24 +141,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
               </div>
 
               {/* Bio Highlights & Quick Technical Profile */}
-              <div className="flex items-center gap-3.5 mb-4">
-                <div className="w-12 h-12 rounded-xl overflow-hidden bg-zinc-800 border border-zinc-700 shrink-0">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-zinc-800 border-2 border-blue-500/70 shadow-lg shrink-0">
                   <img
-                    src="/src/assets/images/portrait_engineer_avatar_1790626129158.jpg"
-                    alt="Syed Atif Qadeer"
+                    src="/src/assets/images/syed_atif_qadeer.jpg"
+                    alt="Syed Atif Qadeer - Senior Software Engineer"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
-                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.src = "/syed_atif_qadeer.webp";
                     }}
                   />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-white leading-tight">
+                  <h3 className="text-lg font-bold text-white leading-tight">
                     {personal.name}
                   </h3>
-                  <p className="text-xs text-blue-400 font-medium">
+                  <p className="text-xs sm:text-sm text-blue-400 font-semibold mt-0.5">
                     {personal.title} &middot; IBSTEC
+                  </p>
+                  <p className="text-xs text-zinc-400 font-mono mt-1">
+                    MS Computer Science &middot; Lahore, PK
                   </p>
                 </div>
               </div>

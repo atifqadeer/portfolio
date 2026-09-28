@@ -164,16 +164,29 @@ Focus: ${edu.focus}
           {/* Header */}
           <div className="border-b border-zinc-800 pb-6 mb-8">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase">
-                  {personal.name}
-                </h1>
-                <p className="text-lg font-semibold text-blue-400 mt-1">
-                  {personal.title}
-                </p>
-                <p className="text-xs text-zinc-400 font-mono mt-0.5">
-                  {personal.specialization}
-                </p>
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-700 shrink-0 shadow-md">
+                  <img
+                    src="/src/assets/images/syed_atif_qadeer.jpg"
+                    alt={personal.name}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = "/syed_atif_qadeer.webp";
+                    }}
+                  />
+                </div>
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase">
+                    {personal.name}
+                  </h1>
+                  <p className="text-base sm:text-lg font-semibold text-blue-400 mt-0.5">
+                    {personal.title}
+                  </p>
+                  <p className="text-xs text-zinc-400 font-mono mt-0.5">
+                    {personal.specialization}
+                  </p>
+                </div>
               </div>
 
               {/* Contact metadata */}
