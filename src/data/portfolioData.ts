@@ -174,7 +174,7 @@ export const PORTFOLIO_DATA = {
       id: "ibstec",
       company: "IBSTEC",
       role: "Laravel Developer / Senior Software Engineer",
-      period: "05/2024 – Present",
+      period: "May 2024 – Present",
       location: "Lahore, Pakistan",
       type: "Full-Time",
       summary:
@@ -206,7 +206,7 @@ export const PORTFOLIO_DATA = {
       id: "viion",
       company: "Viion Technologies",
       role: "Laravel Developer",
-      period: "01/2023 – 05/2024",
+      period: "January 2023 – May 2024",
       location: "Lahore, Pakistan",
       type: "Full-Time",
       summary:
@@ -237,7 +237,7 @@ export const PORTFOLIO_DATA = {
       id: "benchmark",
       company: "Benchmark",
       role: "Core PHP, Laravel & WordPress Developer",
-      period: "08/2021 – 09/2022",
+      period: "August 2021 – September 2022",
       location: "Lahore, Pakistan",
       type: "Full-Time",
       summary:
@@ -273,7 +273,7 @@ export const PORTFOLIO_DATA = {
       id: "wordpress-consulting",
       company: "Independent Web Engineering",
       role: "Senior WordPress & Full-Stack PHP Developer",
-      period: "09/2020 – 08/2021",
+      period: "September 2020 – August 2021",
       location: "Lahore, Pakistan (Remote)",
       type: "Contract / Freelance",
       summary:

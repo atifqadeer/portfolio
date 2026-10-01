@@ -51,50 +51,61 @@ export const InteractiveResumeModal: React.FC<InteractiveResumeModalProps> = ({
   const handleCopyText = () => {
     const { personal, experiences, education, projects, skillsCategories } = PORTFOLIO_DATA;
     const textResume = `
+================================================================================
 ${personal.name.toUpperCase()}
-${personal.title} - ${personal.specialization}
-Phone: ${personal.phoneFormatted} | Email: ${personal.email}
-LinkedIn: ${personal.linkedin}
+${personal.title}
+Specialization: ${personal.specialization}
+================================================================================
+Email: ${personal.email}
+Phone: ${personal.phoneFormatted}
 Location: ${personal.location}
+LinkedIn: ${personal.linkedin}
 
 PROFESSIONAL SUMMARY
+--------------------------------------------------------------------------------
 ${personal.summary}
 
-TECHNICAL CORE COMPETENCIES
-${skillsCategories.map((c) => `${c.category}: ${c.skills.map((s) => s.name).join(', ')}`).join('\n')}
+TECHNICAL SKILLS
+--------------------------------------------------------------------------------
+${skillsCategories.map((c) => `• ${c.category}: ${c.skills.map((s) => s.name).join(', ')}`).join('\n')}
 
 PROFESSIONAL EXPERIENCE
+--------------------------------------------------------------------------------
 ${experiences
   .map(
     (exp) => `
-${exp.role} - ${exp.company}
+${exp.role.toUpperCase()} | ${exp.company} (${exp.type})
 ${exp.period} | ${exp.location}
-${exp.summary}
-${exp.bullets.map((b) => `• ${b}`).join('\n')}
-Core Tech: ${exp.coreTech.join(', ')}
+Overview: ${exp.summary}
+Key Accomplishments:
+${exp.bullets.map((b) => `  - ${b}`).join('\n')}
+Technologies Used: ${exp.coreTech.join(', ')}
 `
   )
   .join('\n')}
 
-KEY PROJECTS & ARCHITECTURES
+KEY TECHNICAL PROJECTS
+--------------------------------------------------------------------------------
 ${projects
   .map(
     (p) => `
-${p.title} (${p.client} - ${p.liveStatus})
-Role: ${p.role} | Tech: ${p.techStack.join(', ')}
-${p.shortDescription}
+${p.title}
+Client: ${p.client} | Status: ${p.liveStatus} | Role: ${p.role}
+Overview: ${p.shortDescription}
 Highlights:
-${p.keyContributions.map((c) => `• ${c}`).join('\n')}
+${p.keyContributions.map((c) => `  - ${c}`).join('\n')}
+Tech Stack: ${p.techStack.join(', ')}
 `
   )
   .join('\n')}
 
 EDUCATION
+--------------------------------------------------------------------------------
 ${education
   .map(
     (edu) => `
 ${edu.degree}
-${edu.institution} (${edu.period}) - ${edu.location}
+${edu.institution} | ${edu.period} | ${edu.location}
 Focus: ${edu.focus}
 `
   )
@@ -121,9 +132,12 @@ Focus: ${edu.focus}
       >
         {/* Controls Action Bar (Hidden in Print) */}
         <div className="no-print flex items-center justify-between px-5 py-3.5 bg-zinc-900 border-b border-zinc-800 shrink-0">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-zinc-300">
+          <div className="flex items-center gap-2.5">
+            <span className="text-xs font-semibold text-zinc-200">
               Curriculum Vitae &middot; Syed Atif Qadeer
+            </span>
+            <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              ATS-Optimized
             </span>
           </div>
 
@@ -131,16 +145,17 @@ Focus: ${edu.focus}
             <button
               onClick={handleCopyText}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-200 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-lg transition-colors"
+              title="Copy ATS-formatted text for job portals"
             >
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400">Copied</span>
+                  <span className="text-emerald-400 font-semibold">Copied ATS Text</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5 text-zinc-400" />
-                  <span>Copy Text</span>
+                  <span>Copy ATS Text</span>
                 </>
               )}
             </button>
@@ -164,12 +179,16 @@ Focus: ${edu.focus}
         </div>
 
         {/* Scrollable Resume Canvas */}
-        <div className="overflow-y-auto p-6 sm:p-10 bg-zinc-950 text-zinc-100 font-sans">
+        <article
+          itemScope
+          itemType="https://schema.org/Person"
+          className="overflow-y-auto p-6 sm:p-10 bg-zinc-950 text-zinc-100 font-sans"
+        >
           {/* Header */}
-          <div className="pb-6 mb-8">
+          <div className="border-b-2 border-white pb-6 mb-8">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 shrink-0 shadow-md">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 border-2 border-white shrink-0 shadow-md">
                   <img
                     src={syedAtifQadeerAvatar}
                     alt={personal.name}
@@ -186,7 +205,7 @@ Focus: ${edu.focus}
                   <p className="text-base sm:text-lg font-semibold text-blue-400 mt-0.5">
                     {personal.title}
                   </p>
-                  <p className="text-xs text-zinc-400 font-mono mt-0.5 max-w-xl">
+                  <p className="text-xs text-zinc-300 font-mono mt-0.5 max-w-xl">
                     {personal.specialization}
                   </p>
                 </div>
@@ -195,19 +214,19 @@ Focus: ${edu.focus}
               {/* Contact metadata */}
               <div className="space-y-1.5 text-xs text-zinc-300 font-mono shrink-0">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-zinc-500" />
+                  <Phone className="w-3.5 h-3.5 text-zinc-400" />
                   <a href={`tel:${personal.phone}`} className="hover:text-blue-400">
                     {personal.phoneFormatted}
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-zinc-500" />
+                  <Mail className="w-3.5 h-3.5 text-zinc-400" />
                   <a href={`mailto:${personal.email}`} className="hover:text-blue-400">
                     {personal.email}
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Linkedin className="w-3.5 h-3.5 text-zinc-500" />
+                  <Linkedin className="w-3.5 h-3.5 text-zinc-400" />
                   <a
                     href={personal.linkedin}
                     target="_blank"
@@ -218,7 +237,7 @@ Focus: ${edu.focus}
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-zinc-500" />
+                  <MapPin className="w-3.5 h-3.5 text-zinc-400" />
                   <span>{personal.location}</span>
                 </div>
               </div>
@@ -227,7 +246,7 @@ Focus: ${edu.focus}
 
           {/* Professional Summary */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-3 font-mono">
+            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-3 font-mono">
               Professional Summary
             </h2>
             <p className="text-sm text-zinc-300 leading-relaxed">
@@ -237,13 +256,13 @@ Focus: ${edu.focus}
 
           {/* Work Experience */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-4 font-mono">
+            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-4 font-mono">
               Professional Experience
             </h2>
 
             <div className="space-y-6">
               {experiences.map((exp) => (
-                <div key={exp.id} className="relative">
+                <div key={exp.id} className="relative border-b border-white/20 pb-5 last:border-b-0">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
                     <div className="flex items-baseline gap-2">
                       <h3 className="text-base font-bold text-white">
@@ -258,7 +277,7 @@ Focus: ${edu.focus}
                     </div>
                   </div>
 
-                  <p className="text-xs text-zinc-400 mb-2 italic">
+                  <p className="text-xs text-zinc-300 mb-2 italic">
                     {exp.summary}
                   </p>
 
@@ -271,8 +290,8 @@ Focus: ${edu.focus}
                     ))}
                   </ul>
 
-                  <div className="text-[11px] font-mono text-zinc-500">
-                    <span className="text-zinc-400 font-sans font-medium">Core Technologies: </span>
+                  <div className="text-[11px] font-mono text-zinc-400">
+                    <span className="text-white font-sans font-medium">Core Technologies: </span>
                     {exp.coreTech.join(', ')}
                   </div>
                 </div>
@@ -282,13 +301,13 @@ Focus: ${edu.focus}
 
           {/* Key Projects */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-4 font-mono">
+            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-4 font-mono">
               Key Project Portfolios
             </h2>
 
             <div className="space-y-5">
               {projects.map((proj) => (
-                <div key={proj.id} className="p-4 rounded-xl bg-zinc-900/60">
+                <div key={proj.id} className="p-4 rounded-xl bg-zinc-900/60 border border-white/40">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
                     <h3 className="text-sm font-bold text-white">
                       {proj.title}
@@ -311,8 +330,8 @@ Focus: ${edu.focus}
                     ))}
                   </ul>
 
-                  <div className="text-[11px] font-mono text-zinc-500">
-                    <span className="text-zinc-400 font-sans font-medium">Tech: </span>
+                  <div className="text-[11px] font-mono text-zinc-400">
+                    <span className="text-white font-sans font-medium">Tech: </span>
                     {proj.techStack.join(', ')}
                   </div>
                 </div>
@@ -322,15 +341,15 @@ Focus: ${edu.focus}
 
           {/* Skills Grid */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-3 font-mono">
+            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-3 font-mono">
               Technical Core Competencies
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {skillsCategories.map((cat) => (
-                <div key={cat.category} className="p-3 rounded-lg bg-zinc-900/50">
-                  <div className="font-semibold text-zinc-200 mb-1">{cat.category}</div>
-                  <div className="text-zinc-400 font-mono text-[11px] leading-relaxed">
+                <div key={cat.category} className="p-3 rounded-lg bg-zinc-900/50 border border-white/40">
+                  <div className="font-semibold text-white mb-1">{cat.category}</div>
+                  <div className="text-zinc-300 font-mono text-[11px] leading-relaxed">
                     {cat.skills.map((s) => s.name).join(', ')}
                   </div>
                 </div>
@@ -340,12 +359,12 @@ Focus: ${edu.focus}
 
           {/* Education */}
           <div>
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-3 font-mono">
+            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-3 font-mono">
               Education
             </h2>
 
             {education.map((edu, idx) => (
-              <div key={idx} className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div key={idx} className="p-3 rounded-lg border border-white/40 bg-zinc-900/40 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                 <div>
                   <h3 className="text-sm font-bold text-white">
                     {edu.degree}
@@ -353,7 +372,7 @@ Focus: ${edu.focus}
                   <p className="text-xs text-blue-400">
                     {edu.institution} &middot; {edu.location}
                   </p>
-                  <p className="text-xs text-zinc-400 mt-0.5">
+                  <p className="text-xs text-zinc-300 mt-0.5">
                     {edu.focus}
                   </p>
                 </div>
@@ -363,7 +382,7 @@ Focus: ${edu.focus}
               </div>
             ))}
           </div>
-        </div>
+        </article>
 
         {/* Footer in Modal */}
         <div className="no-print p-4 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
