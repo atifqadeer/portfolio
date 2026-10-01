@@ -117,52 +117,51 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
           {/* Right Column: Visual Anchor & Interactive Studio Card (5 cols) */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl bg-zinc-900/90 border border-zinc-800 p-4 sm:p-5 shadow-2xl backdrop-blur-sm overflow-hidden">
-              {/* Studio workspace image with contrast gradient */}
-              <div className="relative rounded-xl overflow-hidden aspect-[16/10] mb-5 bg-zinc-950 border border-zinc-800">
+              {/* Top Card Image: Syed Atif Qadeer Profile Portrait */}
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3] sm:aspect-[16/11] mb-5 bg-zinc-950 border border-zinc-800 shadow-inner">
                 <img
-                  src="/src/assets/images/hero_workspace_studio_1790626105776.jpg"
-                  alt="Syed Atif Qadeer software engineering workstation"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  referrerPolicy="no-referrer"
+                  src={syedAtifQadeerAvatar}
+                  alt={`Portrait of ${personal.name} - Senior Software Engineer`}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
                   onError={(e) => {
-                    // Fallback to stylized SVG placeholder if asset missing
-                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.src = "/syed_atif_qadeer.webp";
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent pointer-events-none" />
                 
                 {/* Active Engineering Overlay Pill */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-zinc-300 bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-zinc-700/60">
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-zinc-300 bg-zinc-900/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-zinc-700/60 shadow-md">
                   <span className="flex items-center gap-1.5 font-mono text-[11px]">
                     <Server className="w-3.5 h-3.5 text-blue-400" />
                     <span>Laravel 11 &middot; WordPress &middot; MySQL</span>
                   </span>
-                  <span className="text-emerald-400 font-medium text-[11px]">Online</span>
+                  <span className="flex items-center gap-1 text-emerald-400 font-medium text-[11px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Online</span>
+                  </span>
                 </div>
               </div>
 
               {/* Bio Highlights & Quick Technical Profile */}
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-zinc-800 border-2 border-blue-500/70 shadow-lg shrink-0">
-                  <img
-                    src={syedAtifQadeerAvatar}
-                    alt={`${personal.name} - Senior Software Engineer`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = "/syed_atif_qadeer.webp";
-                    }}
-                  />
-                </div>
+              <div className="flex items-center justify-between gap-4 mb-4">
                 <div>
-                  <h3 className="text-lg font-bold text-white leading-tight">
-                    {personal.name}
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-bold text-white leading-tight">
+                      {personal.name}
+                    </h3>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                      Verified
+                    </span>
+                  </div>
                   <p className="text-xs sm:text-sm text-blue-400 font-semibold mt-0.5">
                     {personal.title} &middot; IBSTEC
                   </p>
                   <p className="text-xs text-zinc-400 font-mono mt-1">
                     MS Computer Science &middot; Lahore, PK
                   </p>
+                </div>
+                <div className="w-12 h-12 rounded-xl bg-zinc-800/80 border border-zinc-700/80 flex items-center justify-center shrink-0 text-blue-400 shadow-inner">
+                  <Shield className="w-6 h-6" />
                 </div>
               </div>
 
