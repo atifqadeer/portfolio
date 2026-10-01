@@ -9,15 +9,15 @@ export const PrintableResume: React.FC = () => {
       id="printable-resume-document"
       itemScope
       itemType="https://schema.org/Person"
-      className="hidden print:block resume-printable bg-white text-black font-sans p-8 max-w-4xl mx-auto leading-relaxed"
+      className="hidden print:block resume-printable bg-white text-black font-sans w-full max-w-none m-0 p-0 leading-relaxed"
     >
       {/* =========================================================================
           ATS CANONICAL HEADER: Single-column, linear, clean
           ========================================================================= */}
-      <header className="border-b-2 border-black pb-4 mb-5 text-center sm:text-left">
+      <header className="border-b-2 border-black pb-3 mb-4 text-left">
         <h1
           itemProp="name"
-          className="text-3xl font-extrabold text-black tracking-tight uppercase mb-1"
+          className="text-2xl sm:text-3xl font-extrabold text-black tracking-tight uppercase mb-1"
         >
           {personal.name}
         </h1>

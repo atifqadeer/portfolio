@@ -35,17 +35,30 @@
 
 @media print {
   @page {
-    margin: 10mm 12mm 12mm 12mm;
-    size: A4 portrait;
+    margin: 12mm 15mm 15mm 15mm !important;
+    size: auto;
   }
 
+  *,
+  *::before,
+  *::after {
+    color-scheme: light !important;
+    background-color: transparent;
+  }
+
+  :root,
   html,
-  body {
+  body,
+  #root {
+    color-scheme: light !important;
     background-color: #ffffff !important;
     background: #ffffff !important;
     color: #000000 !important;
-    font-size: 10pt !important;
-    line-height: 1.35 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -62,18 +75,21 @@
     display: none !important;
   }
 
-  /* Make the printable resume visible with pure white background */
-  .resume-printable {
+  /* Make the printable resume visible with 100% width and pure white background */
+  .resume-printable,
+  #printable-resume-document {
     display: block !important;
     width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    margin: 0 !important;
     padding: 0 !important;
     background-color: #ffffff !important;
     background: #ffffff !important;
     color: #000000 !important;
     border: none !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
