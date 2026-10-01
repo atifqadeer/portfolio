@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         {/* Zone 3: 1-2 primary actions */}
         <div className="hidden sm:flex items-center gap-3 shrink-0">
           <a
-            href="/atif_qadeer_resume.pdf"
+            href="/atifqadeer_resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-lg transition-colors whitespace-nowrap cursor-pointer hover:text-white"
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             ))}
             <div className="flex flex-col gap-2 pt-3">
               <a
-                href="/atif_qadeer_resume.pdf"
+                href="/atifqadeer_resume.pdf"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
