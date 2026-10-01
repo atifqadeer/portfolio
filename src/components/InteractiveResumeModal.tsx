@@ -49,18 +49,21 @@ export const InteractiveResumeModal: React.FC<InteractiveResumeModalProps> = ({
   };
 
   const handleCopyText = () => {
-    const { personal, experiences, education, projects } = PORTFOLIO_DATA;
+    const { personal, experiences, education, projects, skillsCategories } = PORTFOLIO_DATA;
     const textResume = `
 ${personal.name.toUpperCase()}
-${personal.title}
-Phone: ${personal.phone} | Email: ${personal.email}
+${personal.title} - ${personal.specialization}
+Phone: ${personal.phoneFormatted} | Email: ${personal.email}
 LinkedIn: ${personal.linkedin}
 Location: ${personal.location}
 
-SUMMARY
+PROFESSIONAL SUMMARY
 ${personal.summary}
 
-WORK EXPERIENCE
+TECHNICAL CORE COMPETENCIES
+${skillsCategories.map((c) => `${c.category}: ${c.skills.map((s) => s.name).join(', ')}`).join('\n')}
+
+PROFESSIONAL EXPERIENCE
 ${experiences
   .map(
     (exp) => `
@@ -73,14 +76,14 @@ Core Tech: ${exp.coreTech.join(', ')}
   )
   .join('\n')}
 
-PROJECTS
+KEY PROJECTS & ARCHITECTURES
 ${projects
   .map(
     (p) => `
-${p.title}
+${p.title} (${p.client} - ${p.liveStatus})
 Role: ${p.role} | Tech: ${p.techStack.join(', ')}
 ${p.shortDescription}
-Key Highlights:
+Highlights:
 ${p.keyContributions.map((c) => `• ${c}`).join('\n')}
 `
   )
@@ -109,7 +112,7 @@ Focus: ${edu.focus}
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto"
+      className="no-print fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto"
       onClick={onClose}
     >
       <div
@@ -160,13 +163,13 @@ Focus: ${edu.focus}
           </div>
         </div>
 
-        {/* Printable & Scrollable Resume Canvas */}
+        {/* Scrollable Resume Canvas */}
         <div className="overflow-y-auto p-6 sm:p-10 bg-zinc-950 text-zinc-100 font-sans">
           {/* Header */}
-          <div className="border-b border-zinc-800 pb-6 mb-8">
+          <div className="pb-6 mb-8">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-700 shrink-0 shadow-md">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 shrink-0 shadow-md">
                   <img
                     src={syedAtifQadeerAvatar}
                     alt={personal.name}
@@ -183,7 +186,7 @@ Focus: ${edu.focus}
                   <p className="text-base sm:text-lg font-semibold text-blue-400 mt-0.5">
                     {personal.title}
                   </p>
-                  <p className="text-xs text-zinc-400 font-mono mt-0.5">
+                  <p className="text-xs text-zinc-400 font-mono mt-0.5 max-w-xl">
                     {personal.specialization}
                   </p>
                 </div>
@@ -224,7 +227,7 @@ Focus: ${edu.focus}
 
           {/* Professional Summary */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-800 pb-1.5 mb-3 font-mono">
+            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-3 font-mono">
               Professional Summary
             </h2>
             <p className="text-sm text-zinc-300 leading-relaxed">
@@ -234,7 +237,7 @@ Focus: ${edu.focus}
 
           {/* Work Experience */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-800 pb-1.5 mb-4 font-mono">
+            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-4 font-mono">
               Professional Experience
             </h2>
 
@@ -269,7 +272,7 @@ Focus: ${edu.focus}
                   </ul>
 
                   <div className="text-[11px] font-mono text-zinc-500">
-                    <span className="text-zinc-400 font-sans">Core Technologies: </span>
+                    <span className="text-zinc-400 font-sans font-medium">Core Technologies: </span>
                     {exp.coreTech.join(', ')}
                   </div>
                 </div>
@@ -279,13 +282,13 @@ Focus: ${edu.focus}
 
           {/* Key Projects */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-800 pb-1.5 mb-4 font-mono">
+            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-4 font-mono">
               Key Project Portfolios
             </h2>
 
             <div className="space-y-5">
-              {projects.slice(0, 3).map((proj) => (
-                <div key={proj.id} className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80">
+              {projects.map((proj) => (
+                <div key={proj.id} className="p-4 rounded-xl bg-zinc-900/60">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
                     <h3 className="text-sm font-bold text-white">
                       {proj.title}
@@ -300,7 +303,7 @@ Focus: ${edu.focus}
                   </p>
 
                   <ul className="space-y-1 mb-2">
-                    {proj.keyContributions.slice(0, 3).map((c, i) => (
+                    {proj.keyContributions.map((c, i) => (
                       <li key={i} className="flex items-start gap-2 text-xs text-zinc-300">
                         <span className="text-blue-400">&bull;</span>
                         <span>{c}</span>
@@ -309,7 +312,7 @@ Focus: ${edu.focus}
                   </ul>
 
                   <div className="text-[11px] font-mono text-zinc-500">
-                    <span className="text-zinc-400 font-sans">Tech: </span>
+                    <span className="text-zinc-400 font-sans font-medium">Tech: </span>
                     {proj.techStack.join(', ')}
                   </div>
                 </div>
@@ -319,13 +322,13 @@ Focus: ${edu.focus}
 
           {/* Skills Grid */}
           <div className="mb-8">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-800 pb-1.5 mb-3 font-mono">
+            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-3 font-mono">
               Technical Core Competencies
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {skillsCategories.map((cat) => (
-                <div key={cat.category} className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/60">
+                <div key={cat.category} className="p-3 rounded-lg bg-zinc-900/50">
                   <div className="font-semibold text-zinc-200 mb-1">{cat.category}</div>
                   <div className="text-zinc-400 font-mono text-[11px] leading-relaxed">
                     {cat.skills.map((s) => s.name).join(', ')}
@@ -337,7 +340,7 @@ Focus: ${edu.focus}
 
           {/* Education */}
           <div>
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-800 pb-1.5 mb-3 font-mono">
+            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest pb-1 mb-3 font-mono">
               Education
             </h2>
 

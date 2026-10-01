@@ -34,14 +34,64 @@
 }
 
 @media print {
+  @page {
+    margin: 10mm 12mm 12mm 12mm;
+    size: auto;
+  }
+
+  html,
   body {
     background-color: #ffffff !important;
-    color: #09090b !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.35 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  .no-print {
+
+  /* Completely hide all interactive UI and web chrome */
+  nav,
+  main,
+  footer,
+  .no-print,
+  #contact,
+  #projects,
+  #skills,
+  #experience {
     display: none !important;
   }
-  .print-only {
+
+  /* Make the printable resume visible */
+  .resume-printable {
     display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  /* Remove all border lines and boxes in print output as requested */
+  .resume-printable,
+  .resume-printable *,
+  [id^="printable-resume"] * {
+    border: 0 none transparent !important;
+    border-top: 0 none transparent !important;
+    border-bottom: 0 none transparent !important;
+    border-left: 0 none transparent !important;
+    border-right: 0 none transparent !important;
+    border-width: 0 !important;
+    border-style: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-shadow: none !important;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 }

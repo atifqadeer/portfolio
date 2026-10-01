@@ -13,6 +13,7 @@ import { TechStackMatrix } from './components/TechStackMatrix';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { InteractiveResumeModal } from './components/InteractiveResumeModal';
+import { PrintableResume } from './components/PrintableResume';
 
 export default function App() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -25,45 +26,51 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
-      {/* Navigation Header */}
-      <Navbar
-        onOpenResume={() => setIsResumeModalOpen(true)}
-        onOpenContact={scrollToContact}
-      />
+    <>
+      {/* Dedicated Clean Printable Resume Document (Triggered on Print / PDF) */}
+      <PrintableResume />
 
-      {/* Main Content Sections */}
-      <main className="flex-1">
-        {/* Hero Section */}
-        <Hero
+      {/* Screen Website Application */}
+      <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white no-print">
+        {/* Navigation Header */}
+        <Navbar
           onOpenResume={() => setIsResumeModalOpen(true)}
           onOpenContact={scrollToContact}
         />
 
-        {/* Experience Timeline */}
-        <ExperienceTimeline />
+        {/* Main Content Sections */}
+        <main className="flex-1">
+          {/* Hero Section */}
+          <Hero
+            onOpenResume={() => setIsResumeModalOpen(true)}
+            onOpenContact={scrollToContact}
+          />
 
-        {/* Featured Case Studies & Production Projects */}
-        <ProjectsSection />
+          {/* Experience Timeline */}
+          <ExperienceTimeline />
 
-        {/* Architecture Philosophy */}
-        <ArchitecturePhilosophy />
+          {/* Featured Case Studies & Production Projects */}
+          <ProjectsSection />
 
-        {/* Skills & Technical Competencies Matrix */}
-        <TechStackMatrix />
+          {/* Architecture Philosophy */}
+          <ArchitecturePhilosophy />
 
-        {/* Contact & Transmission Form */}
-        <ContactSection />
-      </main>
+          {/* Skills & Technical Competencies Matrix */}
+          <TechStackMatrix />
 
-      {/* Global Footer */}
-      <Footer onOpenResume={() => setIsResumeModalOpen(true)} />
+          {/* Contact & Transmission Form */}
+          <ContactSection />
+        </main>
 
-      {/* Full Curriculum Vitae & Printable Resume Modal */}
-      <InteractiveResumeModal
-        isOpen={isResumeModalOpen}
-        onClose={() => setIsResumeModalOpen(false)}
-      />
-    </div>
+        {/* Global Footer */}
+        <Footer onOpenResume={() => setIsResumeModalOpen(true)} />
+
+        {/* Full Curriculum Vitae & Printable Resume Modal */}
+        <InteractiveResumeModal
+          isOpen={isResumeModalOpen}
+          onClose={() => setIsResumeModalOpen(false)}
+        />
+      </div>
+    </>
   );
 }
