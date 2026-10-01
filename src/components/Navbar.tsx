@@ -3,11 +3,11 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { FileText, Mail, Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
   onOpenContact: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -69,16 +69,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
 
         {/* Zone 3: 1-2 primary actions */}
         <div className="hidden sm:flex items-center gap-3 shrink-0">
-          <button
-            onClick={onOpenResume}
-            className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-lg transition-colors whitespace-nowrap"
+          <a
+            href="/atif_qadeer_resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-lg transition-colors whitespace-nowrap cursor-pointer hover:text-white"
+            title="Open Resume PDF in new tab"
           >
             <FileText className="w-3.5 h-3.5 text-blue-400" />
             <span>Resume</span>
-          </button>
+          </a>
           <button
             onClick={onOpenContact}
-            className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-sm shadow-blue-900/40 transition-colors whitespace-nowrap"
+            className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-sm shadow-blue-900/40 transition-colors whitespace-nowrap cursor-pointer"
           >
             <Mail className="w-3.5 h-3.5" />
             <span>Get in Touch</span>
@@ -110,22 +113,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
               </a>
             ))}
             <div className="flex flex-col gap-2 pt-3">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenResume();
-                }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-zinc-200 bg-zinc-900 border border-zinc-700 rounded-lg"
+              <a
+                href="/atif_qadeer_resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-zinc-200 bg-zinc-900 border border-zinc-700 rounded-lg hover:text-white"
               >
                 <FileText className="w-4 h-4 text-blue-400" />
-                <span>View / Print Resume</span>
-              </button>
+                <span>Resume (PDF)</span>
+              </a>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg"
+                className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg cursor-pointer"
               >
                 <Mail className="w-4 h-4" />
                 <span>Contact Atif Qadeer</span>

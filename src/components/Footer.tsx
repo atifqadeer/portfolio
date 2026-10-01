@@ -3,10 +3,10 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
 
 interface FooterProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
+export const Footer: React.FC<FooterProps> = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -39,12 +39,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
           <a href="#skills" className="hover:text-white transition-colors">
             Skills
           </a>
-          <button
-            onClick={onOpenResume}
-            className="hover:text-white transition-colors"
+          <a
+            href="/atif_qadeer_resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-white transition-colors cursor-pointer"
           >
-            CV
-          </button>
+            Resume (PDF)
+          </a>
         </div>
 
         {/* Right: Social & Back to Top */}

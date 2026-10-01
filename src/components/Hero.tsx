@@ -3,7 +3,6 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 import syedAtifQadeerAvatar from '../assets/images/syed_atif_qadeer.webp';
 import {
   ArrowRight,
-  Download,
   Github,
   Linkedin,
   Mail,
@@ -15,11 +14,11 @@ import {
 } from 'lucide-react';
 
 interface HeroProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
   onOpenContact: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   const { personal } = PORTFOLIO_DATA;
 
   return (
@@ -72,25 +71,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact }) => {
             <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-8">
               <button
                 onClick={onOpenContact}
-                className="flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-lg shadow-blue-900/30 transition-all duration-150 w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-lg shadow-blue-900/30 transition-all duration-150 w-full sm:w-auto cursor-pointer"
               >
                 <span>Hire / Discuss Project</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={onOpenResume}
-                className="flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-lg transition-colors w-full sm:w-auto"
-              >
-                <Download className="w-4 h-4 text-blue-400" />
-                <span>View Full CV</span>
               </button>
 
               <a
                 href={personal.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="p-3 text-zinc-400 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-lg transition-colors"
+                className="p-3 text-zinc-400 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-lg transition-colors inline-flex items-center justify-center"
                 aria-label="Atif Qadeer LinkedIn Profile"
               >
                 <Linkedin className="w-4 h-4" />
