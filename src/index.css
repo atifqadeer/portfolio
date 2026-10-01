@@ -35,15 +35,15 @@
 
 @media print {
   @page {
-    margin: 8mm 10mm 10mm 10mm;
-    size: auto;
+    margin: 10mm 12mm 12mm 12mm;
+    size: A4 portrait;
   }
 
   html,
   body {
-    background-color: #09090b !important;
-    background: #09090b !important;
-    color: #ffffff !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
     font-size: 10pt !important;
     line-height: 1.35 !important;
     -webkit-print-color-adjust: exact !important;
@@ -62,32 +62,29 @@
     display: none !important;
   }
 
-  /* Make the printable resume visible with sleek dark canvas */
+  /* Make the printable resume visible with pure white background */
   .resume-printable {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
-    padding: 1.25rem !important;
-    background-color: #09090b !important;
-    background: #09090b !important;
-    color: #ffffff !important;
-    border: 2px solid #ffffff !important;
-    border-radius: 0.75rem !important;
+    padding: 0 !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    border-radius: 0 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Keep all borders in print and enforce WHITE color as requested */
-  .resume-printable [class*="border"],
-  .resume-printable hr,
-  .resume-printable .border,
-  .resume-printable .border-t,
-  .resume-printable .border-b,
-  .resume-printable .border-l,
-  .resume-printable .border-r,
-  [id^="printable-resume"] [class*="border"] {
-    border-color: #ffffff !important;
+  /* ATS standard section borders in dark/black */
+  .resume-printable .border-b-2 {
+    border-bottom: 2px solid #000000 !important;
+  }
+
+  .resume-printable .border-b {
+    border-bottom: 1px solid #333333 !important;
   }
 
   .print-avoid-break {

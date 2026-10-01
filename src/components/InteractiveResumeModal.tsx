@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import syedAtifQadeerAvatar from '../assets/images/syed_atif_qadeer.webp';
 import {
   X,
   Printer,
   Copy,
   Check,
-  Download,
-  Mail,
-  Phone,
-  MapPin,
-  Linkedin,
-  ExternalLink,
-  Briefcase,
-  GraduationCap,
-  Sparkles,
+  CheckCircle2,
 } from 'lucide-react';
 
 interface InteractiveResumeModalProps {
@@ -127,17 +118,18 @@ Focus: ${edu.focus}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl max-h-[94vh] flex flex-col bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden my-auto"
+        className="relative w-full max-w-4xl max-h-[94vh] flex flex-col bg-white border border-zinc-300 rounded-2xl shadow-2xl overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Controls Action Bar (Hidden in Print) */}
-        <div className="no-print flex items-center justify-between px-5 py-3.5 bg-zinc-900 border-b border-zinc-800 shrink-0">
+        <div className="no-print flex items-center justify-between px-5 py-3.5 bg-zinc-900 border-b border-zinc-800 shrink-0 text-white">
           <div className="flex items-center gap-2.5">
             <span className="text-xs font-semibold text-zinc-200">
               Curriculum Vitae &middot; Syed Atif Qadeer
             </span>
             <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              ATS-Optimized
+              <CheckCircle2 className="w-3 h-3" />
+              ATS-Optimized Single-Column
             </span>
           </div>
 
@@ -145,7 +137,7 @@ Focus: ${edu.focus}
             <button
               onClick={handleCopyText}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-200 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-lg transition-colors"
-              title="Copy ATS-formatted text for job portals"
+              title="Copy ATS-formatted plaintext for job portals"
             >
               {copied ? (
                 <>
@@ -178,218 +170,192 @@ Focus: ${edu.focus}
           </div>
         </div>
 
-        {/* Scrollable Resume Canvas */}
+        {/* Scrollable Resume Canvas (White Background & Single-Column ATS Layout) */}
         <article
           itemScope
           itemType="https://schema.org/Person"
-          className="overflow-y-auto p-6 sm:p-10 bg-zinc-950 text-zinc-100 font-sans"
+          className="overflow-y-auto p-6 sm:p-10 bg-white text-black font-sans leading-relaxed"
         >
           {/* Header */}
-          <div className="border-b-2 border-white pb-6 mb-8">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-zinc-900 border-2 border-white shrink-0 shadow-md">
-                  <img
-                    src={syedAtifQadeerAvatar}
-                    alt={personal.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = "/syed_atif_qadeer.webp";
-                    }}
-                  />
-                </div>
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase">
-                    {personal.name}
-                  </h1>
-                  <p className="text-base sm:text-lg font-semibold text-blue-400 mt-0.5">
-                    {personal.title}
-                  </p>
-                  <p className="text-xs text-zinc-300 font-mono mt-0.5 max-w-xl">
-                    {personal.specialization}
-                  </p>
-                </div>
-              </div>
+          <header className="border-b-2 border-black pb-4 mb-6">
+            <h1
+              itemProp="name"
+              className="text-2xl sm:text-3xl font-extrabold text-black tracking-tight uppercase mb-1"
+            >
+              {personal.name}
+            </h1>
+            <p
+              itemProp="jobTitle"
+              className="text-sm sm:text-base font-bold text-zinc-800 mb-2"
+            >
+              {personal.title} &mdash; {personal.specialization}
+            </p>
 
-              {/* Contact metadata */}
-              <div className="space-y-1.5 text-xs text-zinc-300 font-mono shrink-0">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-zinc-400" />
-                  <a href={`tel:${personal.phone}`} className="hover:text-blue-400">
-                    {personal.phoneFormatted}
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-zinc-400" />
-                  <a href={`mailto:${personal.email}`} className="hover:text-blue-400">
-                    {personal.email}
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Linkedin className="w-3.5 h-3.5 text-zinc-400" />
-                  <a
-                    href={personal.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-blue-400"
-                  >
-                    linkedin.com/in/syedatif-qadeer-691791105
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-zinc-400" />
-                  <span>{personal.location}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* ATS Contact Bar */}
+            <address className="not-italic text-xs text-zinc-700 font-medium flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                <span itemProp="addressLocality">{personal.location}</span>
+              </span>
+              <span>&bull;</span>
+              <a href={`tel:${personal.phone}`} itemProp="telephone" className="text-black hover:underline font-semibold">
+                {personal.phoneFormatted}
+              </a>
+              <span>&bull;</span>
+              <a href={`mailto:${personal.email}`} itemProp="email" className="text-black hover:underline font-semibold">
+                {personal.email}
+              </a>
+              <span>&bull;</span>
+              <a
+                href={personal.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                itemProp="sameAs"
+                className="text-blue-700 hover:underline font-semibold"
+              >
+                linkedin.com/in/syedatif-qadeer-691791105
+              </a>
+            </address>
+          </header>
 
-          {/* Professional Summary */}
-          <div className="mb-8">
-            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-3 font-mono">
-              Professional Summary
+          {/* Section 1: Professional Summary */}
+          <section className="mb-6">
+            <h2 className="text-xs sm:text-sm font-extrabold text-black uppercase tracking-wider border-b border-black pb-1 mb-2 font-mono">
+              PROFESSIONAL SUMMARY
             </h2>
-            <p className="text-sm text-zinc-300 leading-relaxed">
+            <p itemProp="description" className="text-xs sm:text-sm text-zinc-800 leading-relaxed text-justify">
               {personal.summary}
             </p>
-          </div>
+          </section>
 
-          {/* Work Experience */}
-          <div className="mb-8">
-            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-4 font-mono">
-              Professional Experience
+          {/* Section 2: Technical Skills (Single-Column Linear Listing for ATS) */}
+          <section className="mb-6">
+            <h2 className="text-xs sm:text-sm font-extrabold text-black uppercase tracking-wider border-b border-black pb-1 mb-2.5 font-mono">
+              TECHNICAL SKILLS
+            </h2>
+            <div className="space-y-1.5 text-xs sm:text-sm text-zinc-800">
+              {skillsCategories.map((cat) => (
+                <div key={cat.category} className="leading-snug">
+                  <span className="font-bold text-black">{cat.category}: </span>
+                  <span className="text-zinc-800">
+                    {cat.skills.map((s) => s.name).join(', ')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Section 3: Professional Experience */}
+          <section className="mb-6">
+            <h2 className="text-xs sm:text-sm font-extrabold text-black uppercase tracking-wider border-b border-black pb-1 mb-3.5 font-mono">
+              PROFESSIONAL EXPERIENCE
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               {experiences.map((exp) => (
-                <div key={exp.id} className="relative border-b border-white/20 pb-5 last:border-b-0">
+                <div key={exp.id} className="border-b border-zinc-200 pb-4 last:border-b-0">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
-                    <div className="flex items-baseline gap-2">
-                      <h3 className="text-base font-bold text-white">
-                        {exp.role}
-                      </h3>
-                      <span className="text-sm font-semibold text-blue-400">
-                        &middot; {exp.company}
-                      </span>
-                    </div>
-                    <div className="text-xs text-zinc-400 font-mono">
-                      {exp.period} &middot; {exp.location}
+                    <h3 className="text-xs sm:text-sm font-bold text-black uppercase">
+                      {exp.role} <span className="font-semibold text-zinc-700">&mdash; {exp.company}</span>
+                      <span className="text-zinc-500 font-normal normal-case ml-1.5">({exp.type})</span>
+                    </h3>
+                    <div className="text-xs font-semibold text-zinc-700 font-mono">
+                      <time>{exp.period}</time> | {exp.location}
                     </div>
                   </div>
 
-                  <p className="text-xs text-zinc-300 mb-2 italic">
+                  <p className="text-xs text-zinc-600 italic mb-2">
                     {exp.summary}
                   </p>
 
-                  <ul className="space-y-1.5 mb-3">
+                  <ul className="space-y-1 mb-2 text-xs sm:text-sm text-zinc-800 list-disc list-outside pl-4">
                     {exp.bullets.map((bullet, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs text-zinc-300 leading-relaxed">
-                        <span className="text-blue-400 mt-0.5">&bull;</span>
+                      <li key={idx} className="leading-relaxed">
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="text-[11px] font-mono text-zinc-400">
-                    <span className="text-white font-sans font-medium">Core Technologies: </span>
-                    {exp.coreTech.join(', ')}
+                  <div className="text-[11px] sm:text-xs text-zinc-700 mt-1">
+                    <span className="font-bold text-black">Technologies: </span>
+                    <span>{exp.coreTech.join(', ')}</span>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          {/* Key Projects */}
-          <div className="mb-8">
-            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-4 font-mono">
-              Key Project Portfolios
+          {/* Section 4: Key Technical Projects */}
+          <section className="mb-6">
+            <h2 className="text-xs sm:text-sm font-extrabold text-black uppercase tracking-wider border-b border-black pb-1 mb-3.5 font-mono">
+              KEY TECHNICAL PROJECTS
             </h2>
 
-            <div className="space-y-5">
+            <div className="space-y-4">
               {projects.map((proj) => (
-                <div key={proj.id} className="p-4 rounded-xl bg-zinc-900/60 border border-white/40">
+                <div key={proj.id} className="border-b border-zinc-200 pb-3.5 last:border-b-0">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
-                    <h3 className="text-sm font-bold text-white">
-                      {proj.title}
+                    <h3 className="text-xs sm:text-sm font-bold text-black">
+                      {proj.title} <span className="font-normal text-zinc-600">&mdash; {proj.client}</span>
                     </h3>
-                    <div className="text-xs text-zinc-400 font-mono">
-                      {proj.client} &middot; {proj.liveStatus}
+                    <div className="text-xs font-semibold text-zinc-600 font-mono">
+                      {proj.liveStatus}
                     </div>
                   </div>
 
-                  <p className="text-xs text-zinc-300 mb-2">
+                  <p className="text-xs text-zinc-800 mb-1.5">
                     {proj.shortDescription}
                   </p>
 
-                  <ul className="space-y-1 mb-2">
+                  <ul className="space-y-1 mb-1.5 text-xs text-zinc-800 list-disc list-outside pl-4">
                     {proj.keyContributions.map((c, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-zinc-300">
-                        <span className="text-blue-400">&bull;</span>
+                      <li key={i} className="leading-relaxed">
                         <span>{c}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="text-[11px] font-mono text-zinc-400">
-                    <span className="text-white font-sans font-medium">Tech: </span>
-                    {proj.techStack.join(', ')}
+                  <div className="text-[11px] sm:text-xs text-zinc-700 mt-1">
+                    <span className="font-bold text-black">Tech Stack: </span>
+                    <span>{proj.techStack.join(', ')}</span>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          {/* Skills Grid */}
-          <div className="mb-8">
-            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-3 font-mono">
-              Technical Core Competencies
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {skillsCategories.map((cat) => (
-                <div key={cat.category} className="p-3 rounded-lg bg-zinc-900/50 border border-white/40">
-                  <div className="font-semibold text-white mb-1">{cat.category}</div>
-                  <div className="text-zinc-300 font-mono text-[11px] leading-relaxed">
-                    {cat.skills.map((s) => s.name).join(', ')}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Education */}
-          <div>
-            <h2 className="text-xs font-bold text-white uppercase tracking-widest border-b-2 border-white pb-1 mb-3 font-mono">
-              Education
+          {/* Section 5: Education */}
+          <section>
+            <h2 className="text-xs sm:text-sm font-extrabold text-black uppercase tracking-wider border-b border-black pb-1 mb-2.5 font-mono">
+              EDUCATION
             </h2>
 
             {education.map((edu, idx) => (
-              <div key={idx} className="p-3 rounded-lg border border-white/40 bg-zinc-900/40 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div key={idx} className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-sm">
                 <div>
-                  <h3 className="text-sm font-bold text-white">
+                  <h3 className="font-bold text-black uppercase">
                     {edu.degree}
                   </h3>
-                  <p className="text-xs text-blue-400">
-                    {edu.institution} &middot; {edu.location}
+                  <p className="text-zinc-700 font-medium">
+                    {edu.institution} &mdash; {edu.location}
                   </p>
-                  <p className="text-xs text-zinc-300 mt-0.5">
-                    {edu.focus}
+                  <p className="text-xs text-zinc-600 mt-0.5">
+                    Focus: {edu.focus}
                   </p>
                 </div>
-                <div className="text-xs text-zinc-400 font-mono shrink-0">
-                  {edu.period}
+                <div className="text-xs font-mono font-semibold text-zinc-700 shrink-0">
+                  <time>{edu.period}</time>
                 </div>
               </div>
             ))}
-          </div>
+          </section>
         </article>
 
         {/* Footer in Modal */}
-        <div className="no-print p-4 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
-          <span>Syed Atif Qadeer &middot; Professional Resume</span>
+        <div className="no-print p-4 bg-zinc-100 border-t border-zinc-200 flex items-center justify-between text-xs text-zinc-600">
+          <span>Syed Atif Qadeer &middot; ATS-Compliant Curriculum Vitae</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors"
+            className="px-4 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg transition-colors font-medium"
           >
             Close Viewer
           </button>
