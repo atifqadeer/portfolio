@@ -65,6 +65,8 @@ export const PORTFOLIO_DATA = {
     email: "atifqadeer26@gmail.com",
     phone: "+923438677088",
     phoneFormatted: "+92 343 8677088",
+    whatsapp: "https://wa.me/923438677088",
+    whatsappNumber: "+923438677088",
     location: "Lahore, 54000, Pakistan",
     timezone: "PKT (UTC+5)",
     availability: "Available for Senior Backend Roles, Architecture Consulting & Contracts",
