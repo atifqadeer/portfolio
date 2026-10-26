@@ -170,7 +170,7 @@ export const ContactSection: React.FC = () => {
                     rel="noreferrer"
                     className="text-sm font-bold text-white hover:text-sky-400 transition-colors flex items-center gap-1 mt-0.5"
                   >
-                    <span>in/syedatif-qadeer-691791105</span>
+                    <span>in/syed-atif-qadeer-691791105</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
                   </a>
                   <p className="text-xs text-zinc-500 mt-1">Connect for professional endorsements & referrals</p>
