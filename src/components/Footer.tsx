@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = () => {
             Skills
           </a>
           <a
-            href="/atif_qadeer_resume.pdf"
+            href="/atifqadeer_resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="hover:text-white transition-colors cursor-pointer"
