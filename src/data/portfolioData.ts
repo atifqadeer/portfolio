@@ -56,7 +56,7 @@ export interface SkillCategory {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Syed Atif Qadeer",
-    preferredName: "Atif Qadeer",
+    preferredName: "Syed Atif Qadeer",
     title: "Senior Software Engineer",
     specialization: "Laravel · WordPress & WooCommerce · Microservices · PHP Ecosystem · High-Scale APIs",
     tagline: "Engineering scalable backend architectures, custom WordPress solutions, high-throughput event pipelines, and secure web systems.",
